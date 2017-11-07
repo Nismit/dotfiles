@@ -1,0 +1,16 @@
+"*":
+  core:
+    telemetryConsent: "no"
+  editor:
+    fontSize: 12
+    showIndentGuide: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "dfcdf6a3-77d5-4080-9a00-4b3314d629d5"
+  "linter-ui-default": {}
+  minimap:
+    plugins:
+      "minimap-autohider": true
+      "minimap-autohiderDecorationsZIndex": 0
+  welcome:
+    showOnStartup: false

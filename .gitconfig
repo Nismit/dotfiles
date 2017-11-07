@@ -1,0 +1,10 @@
+[user]
+	name = Nismit
+	email = nismit.dev@gmail.com
+
+#[url "github:"]
+#        InsteadOf = https://github.com/
+#        InsteadOf = git@github.com:
+
+[core]
+  excludesfile = ~/.gitignore_global

@@ -54,3 +54,6 @@ let g:lightline = {
   \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
   \ }
   \ }
+
+" show line number
+set number

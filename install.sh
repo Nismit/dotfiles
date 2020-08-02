@@ -33,10 +33,13 @@ dotfiles_download() {
         exit 1
     fi
 
+    printf "${CYAN}Download dotfiles...${NC}\n"
     git clone --recursive "$DOTFILES_GITHUB" "$DOTPATH"
 }
 
 dotfiles_install() {
+    printf "${CYAN}Install dotfiles...${NC}\n"
+
     for f in $DOTPATH/.??*
     do
         [[ "$f" == ".git" ]] && continue
@@ -52,8 +55,9 @@ dotfiles_update() {
 }
 
 dotfiles_download
+
 if [ $? -eq 0 ]; then
-    dotfiles_update
-else
     dotfiles_install
+else
+    dotfiles_update
 fi

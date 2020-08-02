@@ -1,25 +1,6 @@
 # Dotfiles
-Work in progress. Probably, all the files will be updated or removed.
 
-## Note
-Symbolic link Command Memo (Should be automation in this task)
-
+## Usage
 ```bash
-cd dotfiles/
-ln -nfs $HOME/.atom/config.cson config.cson
+bash -c "$(curl -L raw.githubusercontent.com/Nismit/dotfiles/master/install.sh)"
 ```
-
-### Atom export/import packages Memo
-
-Export
-```bash
-apm list --installed --bare > packages.txt
-```
-
-Import
-```bash
-apm install --packages-file packages.txt
-```
-### Atom Theme
-
-UI / Syntax -> One Dark

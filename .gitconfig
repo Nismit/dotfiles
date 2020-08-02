@@ -2,9 +2,21 @@
   name = Nismit
   email = nismit.dev@gmail.com
 
-#[url "github:"]
-#        InsteadOf = https://github.com/
-#        InsteadOf = git@github.com:
-
 [core]
   excludesfile = ~/.gitignore_global
+
+[color "diff"]
+  meta = 242 238
+  frag = 239 236
+  old = 167 normal
+  new = 030 normal
+  context = 240
+  commit = 246 024
+
+[diff]
+  compactionHeuristic = true
+
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less

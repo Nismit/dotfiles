@@ -30,7 +30,7 @@ fi
 dotfiles_download() {
     if [ -d "$DOTPATH" ]; then
         printf "${RED}$DOTPATH: Already exists${NC}\n"
-        exit 1
+        return 1
     fi
 
     printf "${CYAN}Download dotfiles...${NC}\n"

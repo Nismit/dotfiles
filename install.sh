@@ -40,17 +40,20 @@ dotfiles_download() {
 dotfiles_install() {
     printf "${CYAN}Install dotfiles...${NC}\n"
 
-    for f in $DOTPATH/.??*
+    for f in $DOTPATH/.??*;
     do
-        [[ "$f" == ".git" ]] && continue
-        [[ "$f" == ".DS_Store" ]] && continue
-        [[ "$f" == ".vimrc" ]] && continue
+        [[ `basename $f` == ".git" ]] && continue
+        [[ `basename $f` == ".DS_Store" ]] && continue
+        [[ `basename $f` == ".vimrc" ]] && continue
 
+        printf "${CYAN}Symbolic link ${GREEN}$f${NC} to ${GREEN}$HOME${NC}.${NC}\n"
         command ln -snf $f $HOME
     done
 }
 
 dotfiles_update() {
+    printf "${CYAN}Updating dotfiles...${NC}\n"
+
     command cd $DOTPATH && git pull origin master
 }
 

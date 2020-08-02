@@ -18,13 +18,20 @@ setopt hist_ignore_all_dups
 # Share history all terminal
 setopt share_history
 
+## Completion
+autoload -U compinit
+compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+## Typo Correction
+setopt correct
+
 ## PROMPT
 autoload -Uz vcs_info
 setopt prompt_subst
-zstyle ':vcs_info:*' enable git svn hg bzr
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr "+"
-zstyle ':vcs_info:*' unstagedstr "*"
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "!"
 zstyle ':vcs_info:*' formats '(%b%c%u)'
 zstyle ':vcs_info:*' actionformats '(%b(%a)%c%u)'
 
@@ -35,7 +42,7 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 #add-zsh-hook precmd _update_vcs_info_msg
-PROMPT="%{${fg[green]}%}%n%{${reset_color}%}%F{blue}%f:%1(v|%F{red}%1v%f|) 👉 "
+PROMPT="%{${fg[green]}%}%n%{${reset_color}%}%F{blue}%f:%1(v|%1v|) 👉 "
 RPROMPT='[%F{green}%2~%f]'
 
 ## EXPORTS

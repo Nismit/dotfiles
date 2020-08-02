@@ -30,20 +30,22 @@ setopt correct
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "+"
-zstyle ':vcs_info:git:*' unstagedstr "!"
-zstyle ':vcs_info:*' formats '(%b%c%u)'
-zstyle ':vcs_info:*' actionformats '(%b(%a)%c%u)'
+zstyle ':vcs_info:git:*' stagedstr "%F{220}+%f"
+zstyle ':vcs_info:git:*' unstagedstr " %F{red}?%f"
+zstyle ':vcs_info:*' formats "%F{087}[%b%c%u]%f"
+zstyle ':vcs_info:*' actionformats '%F{red}(%b(%a)%c%u)%f'
 
-# call vcs_info
-precmd () {
-    psvar=()
+function _update_vcs_info_msg() {
     LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+
+    if [[ -z ${vcs_info_msg_0_} ]]; then
+        PROMPT="%F{green}%~%f ⚡️ "
+    else
+        PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ⚡️ "
+    fi
 }
-#add-zsh-hook precmd _update_vcs_info_msg
-PROMPT="%{${fg[green]}%}%n%{${reset_color}%}%F{blue}%f:%1(v|%1v|) 👉 "
-RPROMPT='[%F{green}%2~%f]'
+
+add-zsh-hook precmd _update_vcs_info_msg
 
 ## EXPORTS
 export NVM_DIR="$HOME/.nvm"

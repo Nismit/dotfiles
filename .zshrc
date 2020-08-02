@@ -30,12 +30,12 @@ setopt correct
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{220}+%f"
+zstyle ':vcs_info:git:*' stagedstr " %F{220}+%f"
 zstyle ':vcs_info:git:*' unstagedstr " %F{red}?%f"
 zstyle ':vcs_info:*' formats "%F{087}[%b%c%u]%f"
 zstyle ':vcs_info:*' actionformats '%F{red}(%b(%a)%c%u)%f'
 
-function _update_vcs_info_msg() {
+function precmd() {
     LANG=en_US.UTF-8 vcs_info
 
     if [[ -z ${vcs_info_msg_0_} ]]; then
@@ -44,8 +44,6 @@ function _update_vcs_info_msg() {
         PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ⚡️ "
     fi
 }
-
-add-zsh-hook precmd _update_vcs_info_msg
 
 ## EXPORTS
 export NVM_DIR="$HOME/.nvm"

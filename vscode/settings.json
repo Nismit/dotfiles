@@ -1,0 +1,6 @@
+{
+    "workbench.settings.editor": "json",
+    "workbench.startupEditor": "newUntitledFile",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "window.zoomLevel": 0
+}

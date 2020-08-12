@@ -9,20 +9,27 @@
 DOTPATH=~/.dotfiles/vscode; export DOTPATH
 VSCODE_PATH=$HOME/Library/Application\ Support/Code/User; export VSCODE_PATH
 
-for f in "$VSCODE_PATH"/*;
-do
-    [[ "$f" == "$VSCODE_PATH/globalStorage" ]] && continue
-    [[ "$f" == "$VSCODE_PATH/snippets" ]] && continue
-    [[ "$f" == "$VSCODE_PATH/workspaceStorage" ]] && continue
+vscode_config_install() {
+    for f in "$VSCODE_PATH"/*;
+    do
+        [[ "$f" == "$VSCODE_PATH/globalStorage" ]] && continue
+        [[ "$f" == "$VSCODE_PATH/snippets" ]] && continue
+        [[ "$f" == "$VSCODE_PATH/workspaceStorage" ]] && continue
 
-    # Check Symbolic Link
-    # If the files have already symbolic linked
-    # this state will be true
-    if [ ! -L "$f" ]; then
-        # echo `basename "$f"`;
-        # echo "$DOTPATH/`basename "$f"`"
-        echo "Make Backup..."
-        command mv "$f" "$f.bak"
-        command ln -snf "$DOTPATH/`basename "$f"`" "$VSCODE_PATH/"
-    fi
-done
+        if [ ! ${f##*.} = "bak" ]; then
+            echo ${f##*.}
+            # echo "Make Backup..."
+            # command mv "$f" "$f.bak"
+        fi
+        # command ln -snf "$DOTPATH/`basename "$f"`" "$VSCODE_PATH/"
+
+        
+    done
+}
+
+if [ ! -L "$VSCODE_PATH/keybindings.json" ]; then
+    vscode_config_install
+else
+    echo "Settings Already Linked!"
+    vscode_config_install
+fi

@@ -4,6 +4,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias gs='git status'
 alias gb='git branch'
+alias gr='git remote update -p'
 alias unstage='git reset HEAD --'
 alias damn='git reset --soft HEAD^'
 

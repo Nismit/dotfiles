@@ -4,7 +4,6 @@ cask_args appdir: "/Applications"
 
 brew "mas"
 brew "ffmpeg"
-brew "hugo"
 brew "tree"
 brew "watchman"
 

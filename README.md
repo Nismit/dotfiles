@@ -5,6 +5,12 @@
 bash -c "$(curl -L raw.githubusercontent.com/Nismit/dotfiles/master/install.sh)"
 ```
 
+## Update Homebrew/nvm
+```zsh
+cd .dotfiles
+sh bootstrap.sh
+```
+
 ## Troubleshooting
 After install the dotfiles, then you might get this message when you opened the terminal.
 

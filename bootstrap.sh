@@ -23,6 +23,6 @@ if [ ! -e "$HOME/.volta" ]; then
     echo "Installing volta... >"
     curl https://get.volta.sh | bash
 else
-    # echo "volta updating... >"
+    echo "volta updating... >"
     # volta does not provide update functionality
 fi

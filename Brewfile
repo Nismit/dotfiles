@@ -5,7 +5,6 @@ cask_args appdir: "/Applications"
 brew "mas"
 brew "ffmpeg"
 brew "tree"
-brew "watchman"
 
 cask "google-chrome"
 cask "firefox"

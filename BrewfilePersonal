@@ -1,0 +1,12 @@
+cask_args appdir: "/Applications"
+
+brew "ffmpeg"
+
+cask "docker"
+cask "cyberduck"
+cask "discord"
+cask "karabiner-elements"
+cask "appcleaner"
+cask "amazon-photos"
+cask "adobe-creative-cloud"
+cask "qmk-toolbox"

@@ -5,10 +5,10 @@
 bash -c "$(curl -L raw.githubusercontent.com/Nismit/dotfiles/master/install.sh)"
 ```
 
-## Update Homebrew/nvm
-```zsh
-cd .dotfiles
-sh bootstrap.sh
+## Install/Update Homebrew/volta
+```bash
+# .zshrc has an alias to execute bootstrap script
+bootstrap
 ```
 
 ## Troubleshooting

@@ -23,44 +23,47 @@ readonly WHITE='\033[1;37m'
 readonly NC='\033[0m'
 
 if [ -z "${DOTPATH:-}" ]; then
-    DOTPATH=~/.dotfiles; export DOTPATH
-    DOTFILES_GITHUB="https://github.com/Nismit/dotfiles.git"; export DOTFILES_GITHUB
+  DOTPATH=~/.dotfiles; export DOTPATH
+  DOTFILES_GITHUB="https://github.com/Nismit/dotfiles.git"; export DOTFILES_GITHUB
 fi
 
 dotfiles_download() {
-    if [ -d "$DOTPATH" ]; then
-        printf "${RED}$DOTPATH: Already exists${NC}\n"
-        return 1
-    fi
+  if [ -d "$DOTPATH" ]; then
+    printf "${RED}$DOTPATH: Already exists${NC}\n"
+    return 1
+  fi
 
-    printf "${CYAN}Download dotfiles...${NC}\n"
-    git clone --recursive "$DOTFILES_GITHUB" "$DOTPATH"
+  printf "${CYAN}Download dotfiles...${NC}\n"
+  git clone --recursive "$DOTFILES_GITHUB" "$DOTPATH"
 }
 
 dotfiles_install() {
-    printf "${CYAN}Install dotfiles...${NC}\n"
+  printf "${CYAN}Install dotfiles...${NC}\n"
 
-    for f in $DOTPATH/.??*;
-    do
-        [[ `basename $f` == ".git" ]] && continue
-        [[ `basename $f` == ".DS_Store" ]] && continue
-        [[ `basename $f` == ".vimrc" ]] && continue
+  for f in $DOTPATH/.??*;
+  do
+    # Exclude some dotfiles
+    [[ `basename $f` == ".git" ]] && continue
+    [[ `basename $f` == ".DS_Store" ]] && continue
+    [[ `basename $f` == ".vimrc" ]] && continue
 
-        printf "${CYAN}Symbolic link ${GREEN}$f${NC} to ${GREEN}$HOME${NC}.${NC}\n"
-        command ln -snf $f $HOME
-    done
+    printf "${CYAN}Symbolic link ${GREEN}$f${NC} to ${GREEN}$HOME${NC}.${NC}\n"
+    command ln -snf $f $HOME
+  done
 }
 
 dotfiles_update() {
-    printf "${CYAN}Updating dotfiles...${NC}\n"
+  printf "${CYAN}Updating dotfiles...${NC}\n"
 
-    command cd $DOTPATH && git pull origin master
+  command cd $DOTPATH && git pull origin master
 }
 
+# Run download 
 dotfiles_download
 
+# Detect download function result
 if [ $? -eq 0 ]; then
-    dotfiles_install
+  dotfiles_install
 else
-    dotfiles_update
+  dotfiles_update
 fi

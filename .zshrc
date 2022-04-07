@@ -7,6 +7,8 @@ alias gb='git branch'
 alias gr='git remote update -p'
 alias unstage='git reset HEAD --'
 alias damn='git reset --soft HEAD^'
+alias dotfiles='cd ~/.dotfiles'
+alias bootstrap='dotfiles && sh bootstrap.sh'
 
 ## History
 HISTFILE=~/.zsh_history
@@ -37,16 +39,17 @@ zstyle ':vcs_info:*' formats "%F{087}[%b%c%u]%f"
 zstyle ':vcs_info:*' actionformats '%F{red}(%b(%a)%c%u)%f'
 
 function precmd() {
-    LANG=en_US.UTF-8 vcs_info
+  LANG=en_US.UTF-8 vcs_info
 
-    if [[ -z ${vcs_info_msg_0_} ]]; then
-        PROMPT="%F{green}%~%f ⚡️ "
-    else
-        PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ⚡️ "
-    fi
+  if [[ -z ${vcs_info_msg_0_} ]]; then
+    PROMPT="%F{green}%~%f ⚡️ "
+  else
+    PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ⚡️ "
+  fi
 }
 
 ## EXPORTS
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"

@@ -198,3 +198,4 @@ dist
 # Custom
 commandlist.md
 Brewfile.lock.json
+BrewfilePersonal.lock.json

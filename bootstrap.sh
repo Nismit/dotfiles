@@ -37,7 +37,9 @@ install_update_volta() {
     curl https://get.volta.sh | bash
   else
     echo "volta updating... >"
-    # volta does not provide update functionality
+    # volta does not have upgrade itself
+    # just re-run installer then it will be updated
+    curl https://get.volta.sh | bash
   fi
 }
 

@@ -5,6 +5,13 @@
 [core]
   excludesfile = ~/.gitignore_global
 
+[alias]
+  cm = commit -m
+  co = checkout
+  one = log --pretty=oneline
+  tree = log --graph --oneline --decorate
+  prune = fetch --prune
+
 [color "diff"]
   meta = 242 238
   frag = 239 236

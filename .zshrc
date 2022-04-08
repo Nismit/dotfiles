@@ -40,11 +40,12 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%b(%a)%c%u)%f'
 
 function precmd() {
   LANG=en_US.UTF-8 vcs_info
+  EMOJI=$'\U1F389'
 
   if [[ -z ${vcs_info_msg_0_} ]]; then
-    PROMPT="%F{green}%~%f ⚡️ "
+    PROMPT="%F{green}%~%f ${EMOJI} "
   else
-    PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ⚡️ "
+    PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ${EMOJI} "
   fi
 }
 

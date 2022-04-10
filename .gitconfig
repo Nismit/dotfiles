@@ -10,7 +10,7 @@
   co = checkout
   one = log --pretty=oneline
   tree = log --graph --oneline --decorate
-  prune = fetch --prune
+  rbp = fetch --prune
 
 [color "diff"]
   meta = 242 238

@@ -200,3 +200,4 @@ commandlist.md
 Brewfile.lock.json
 BrewfilePersonal.lock.json
 output/
+.credentials.zsh

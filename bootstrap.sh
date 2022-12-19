@@ -8,6 +8,10 @@ if [ -z "${BREWFILE_PERSONAL_PATH:-}" ]; then
   BREWFILE_PERSONAL_PATH=~/.dotfiles/BrewfilePersonal; export BREWFILE_PERSONAL_PATH
 fi
 
+if [ -z "${BREWFILE_XCODE_PATH:-}" ]; then
+  BREWFILE_XCODE_PATH=~/.dotfiles/BrewfileXcode; export BREWFILE_XCODE_PATH
+fi
+
 # Make sure you must login to Mac App Store
 brew_bundle_install() {
   command brew bundle --file $BREWFILEPATH
@@ -16,6 +20,13 @@ brew_bundle_install() {
 # Make sure you must login to Mac App Store
 brew_bundle_personal_install() {
   command brew bundle --file $BREWFILE_PERSONAL_PATH
+}
+
+# Make sure you must login to Mac App Store
+# Xcode download/upgrade takes long time
+# Avoid regular update routine
+brew_bundle_xcode_install() {
+  command brew bundle --file $BREWFILE_XCODE_PATH
 }
 
 install_update_brew() {
@@ -120,7 +131,8 @@ case $choice in
 0)  install_update_brew ;;
 1)  brew_bundle_install ;;
 2)  brew_bundle_personal_install ;;
-3)  install_update_volta ;;
+3)  brew_bundle_xcode_install ;;
+4)  install_update_volta ;;
 esac
 
 

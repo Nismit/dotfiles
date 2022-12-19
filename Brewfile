@@ -4,10 +4,10 @@ cask_args appdir: "/Applications"
 
 brew "mas"
 brew "tree"
+brew "neovim"
+brew "ripgrep"
 
 cask "google-chrome"
 cask "firefox"
 cask "visual-studio-code"
 cask "slack"
-
-mas "Xcode", id: 497799835

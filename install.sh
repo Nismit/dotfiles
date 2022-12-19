@@ -37,9 +37,10 @@ dotfiles_download() {
   git clone --recursive "$DOTFILES_GITHUB" "$DOTPATH"
 }
 
-dotfiles_install() {
-  printf "${CYAN}Install dotfiles...${NC}\n"
 
+# Memo: rm [dir symbolic link path]
+# Memo: unlink [symbolic link path]
+dotfiles_link() {
   for f in $DOTPATH/.??*;
   do
     # Exclude some dotfiles
@@ -47,15 +48,30 @@ dotfiles_install() {
     [[ `basename $f` == ".DS_Store" ]] && continue
     [[ `basename $f` == ".vimrc" ]] && continue
 
-    printf "${CYAN}Symbolic link ${GREEN}$f${NC} to ${GREEN}$HOME${NC}.${NC}\n"
-    command ln -snf $f $HOME
+    # Search in .config dir
+    if [ -d $f ]; then
+      for g in $f/??*;
+      do
+        printf "${CYAN}Symbolic link ${GREEN}$g${NC} to ${GREEN}$HOME/.config/${NC}.${NC}\n"
+        command ln -snf $g $HOME/.config
+      done
+    else
+      printf "${CYAN}Symbolic link ${GREEN}$f${NC} to ${GREEN}$HOME${NC}.${NC}\n"
+      command ln -snf $f $HOME
+    fi
   done
+}
+
+dotfiles_install() {
+  printf "${CYAN}Install dotfiles...${NC}\n"
+  dotfiles_link
 }
 
 dotfiles_update() {
   printf "${CYAN}Updating dotfiles...${NC}\n"
 
   command cd $DOTPATH && git pull origin master
+  dotfiles_link
 }
 
 # Run download 

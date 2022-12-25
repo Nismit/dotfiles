@@ -18,14 +18,17 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { 
-    'lambdalisue/fern.vim', 
-    config = function()
-      require('plugins/fern')
-    end,
-  }
+  use 'lambdalisue/fern.vim'
 
   use 'cocopon/iceberg.vim'
+
+	use {
+		'akinsho/toggleterm.nvim', tag = '*',
+		config = function() 
+		require('toggleterm').setup()
+	end}
+
+	use 'vim-airline/vim-airline'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

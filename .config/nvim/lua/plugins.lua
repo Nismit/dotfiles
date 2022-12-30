@@ -27,22 +27,22 @@ require('packer').startup(function(use)
     'nvim-tree/nvim-tree.lua',
     config = function()
       require("nvim-tree").setup({
-				renderer = {
-					icons = {
-						webdev_colors = false,
-						show = {
-							file = false,
-						},
-						glyphs = {
-							default = '',
-							folder = {
-								default = '',
-								arrow_closed = '',
-								arrow_open = '',
-								open = '>',
-							},
-							git = {
-              	unstaged = '✗',
+        renderer = {
+          icons = {
+            webdev_colors = false,
+            show = {
+              file = false,
+            },
+            glyphs = {
+              default = '',
+              folder = {
+                default = '',
+                arrow_closed = '',
+                arrow_open = '',
+                open = '>',
+              },
+              git = {
+                unstaged = '✗',
               	staged = '✓',
               	unmerged = '>>',
               	renamed = '➜',
@@ -50,15 +50,15 @@ require('packer').startup(function(use)
               	deleted = '-',
               	ignored = '◌',
             	},
-						},
-					},
-				},
-				actions = {
-					open_file = {
-						quit_on_open = true,
-					},
-				},
-			})
+            },
+          },
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
+      })
     end
   }
 
@@ -69,22 +69,22 @@ require('packer').startup(function(use)
     end,
   })
 
-	-- Color Scheme
+  -- Color Scheme
   use 'cocopon/iceberg.vim'
 
-	-- Status line
-	use {
-		'nvim-lualine/lualine.nvim',
-		config = function()
-			require('lualine').setup({
-				options = {
-					icons_enabled = false,
-					section_separators = '|',
-					component_separators = '',
-				},
-			})
-		end
-	}
+  -- Status line
+  use {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup({
+        options = {
+          icons_enabled = false,
+          section_separators = '|',
+          component_separators = '',
+        },
+      })
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

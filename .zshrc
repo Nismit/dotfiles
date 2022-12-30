@@ -10,9 +10,9 @@ alias damn='git reset --soft HEAD^'
 alias dotfiles='cd ~/.dotfiles'
 alias bootstrap='dotfiles && sh bootstrap.sh'
 
-## Enable Later
-# alias vim='nvim'
-# alias vi='nvim'
+## Replace vi, vim to nvim
+alias vim='nvim'
+alias vi='nvim'
 
 ## History
 HISTFILE=~/.zsh_history

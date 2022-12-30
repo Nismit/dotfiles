@@ -1,4 +1,3 @@
-#
 # https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
 #
 
@@ -201,3 +200,4 @@ Brewfile.lock.json
 BrewfilePersonal.lock.json
 output/
 .credentials.zsh
+.config/nvim/config/plugin/*

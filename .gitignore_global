@@ -200,4 +200,4 @@ Brewfile.lock.json
 BrewfilePersonal.lock.json
 output/
 .credentials.zsh
-.config/nvim/config/plugin/*
+.config/nvim/plugin/*

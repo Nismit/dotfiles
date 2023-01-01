@@ -9,7 +9,10 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.mouse = "a"
+-- Mac default terminal does not support 24bit colors
+-- vim.opt.termguicolors = true
 
+--[[
 vim.api.nvim_create_autocmd({'TermOpen'},{
   pattern = '*',
   command = 'startinsert',
@@ -27,7 +30,9 @@ vim.api.nvim_create_user_command(
     nargs = 0,
   }
 )
+]]
 
 vim.api.nvim_set_keymap('t', '<ESC>', [[<C-\><C-n>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>j', ':T<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>j', ':ToggleTerm<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true })

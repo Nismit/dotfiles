@@ -27,6 +27,7 @@ require('packer').startup(function(use)
     'nvim-tree/nvim-tree.lua',
     config = function()
       require("nvim-tree").setup({
+        hijack_cursor = true,
         renderer = {
           icons = {
             webdev_colors = false,
@@ -37,9 +38,9 @@ require('packer').startup(function(use)
               default = '',
               folder = {
                 default = '',
-                arrow_closed = '',
-                arrow_open = '',
-                open = '>',
+                arrow_closed = '→',
+                arrow_open = '↓',
+                open = '',
               },
               git = {
                 unstaged = '✗',
@@ -62,15 +63,24 @@ require('packer').startup(function(use)
     end
   }
 
+  -- Terminal
+  use({
+    'akinsho/toggleterm.nvim', tag = '*',
+    config = function()
+      require('toggleterm').setup({
+        persist_mode = false,
+      })
+    end
+  })
+
+
+  -- Tabline
   use({
     'crispgm/nvim-tabline',
     config = function()
       require('tabline').setup({})
     end,
   })
-
-  -- Color Scheme
-  use 'cocopon/iceberg.vim'
 
   -- Status line
   use {
@@ -85,6 +95,17 @@ require('packer').startup(function(use)
       })
     end
   }
+
+  -- Git sign
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+
+  -- Color Scheme
+  use 'cocopon/iceberg.vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

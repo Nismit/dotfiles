@@ -107,6 +107,11 @@ require('packer').startup(function(use)
   -- Color Scheme
   use 'cocopon/iceberg.vim'
 
+  -- CoC
+  use {
+    'neoclide/coc.nvim', branch = 'release',
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

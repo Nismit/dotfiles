@@ -105,7 +105,7 @@ require('packer').startup(function(use)
   }
 
   -- Color Scheme
-  use {'srcery-colors/srcery-vim', as = 'srcery'}
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- CoC
   use {

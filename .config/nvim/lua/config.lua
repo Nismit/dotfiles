@@ -17,7 +17,7 @@ vim.opt.updatetime = 300
 vim.g.coc_global_extensions = { 'coc-json', 'coc-tsserver', 'coc-html', 'coc-prettier' }
 -- Mac default terminal does not support 24bit colors
 -- vim.opt.termguicolors = true
-local ok, _ = pcall(vim.cmd, 'colorscheme srcery')
+local ok, _ = pcall(vim.cmd, 'colorscheme catppuccin')
 if not ok then
   vim.cmd 'colorscheme default'
 end

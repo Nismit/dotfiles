@@ -9,6 +9,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.mouse = "a"
+vim.opt.background = "dark"
 -- CoC Recommend config
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -16,7 +17,11 @@ vim.opt.updatetime = 300
 vim.g.coc_global_extensions = { 'coc-json', 'coc-tsserver', 'coc-html', 'coc-prettier' }
 -- Mac default terminal does not support 24bit colors
 -- vim.opt.termguicolors = true
-vim.cmd [[ colorscheme iceberg ]]
+local ok, _ = pcall(vim.cmd, 'colorscheme srcery')
+if not ok then
+  vim.cmd 'colorscheme default'
+end
+-- vim.cmd [[ colorscheme iceberg ]]
 
 --[[
 vim.api.nvim_create_autocmd({'TermOpen'},{

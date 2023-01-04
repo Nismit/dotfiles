@@ -15,13 +15,13 @@ local packer_bootstrap = ensure_packer()
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-	-- Fuzzy Finder
+  -- Fuzzy Finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-	-- Filer
+  -- Filer
   -- use 'lambdalisue/fern.vim'
   use {
     'nvim-tree/nvim-tree.lua',
@@ -105,11 +105,19 @@ require('packer').startup(function(use)
   }
 
   -- Color Scheme
-  use 'cocopon/iceberg.vim'
+  use {'srcery-colors/srcery-vim', as = 'srcery'}
 
   -- CoC
   use {
     'neoclide/coc.nvim', branch = 'release',
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

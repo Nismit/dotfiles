@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 
 return {
   use_ime = true, -- Enable Japanese IME
-  font_size = 14.0,
+  font_size = 15.0,
   window_background_opacity = 0.8,
   color_scheme = 'iceberg-dark',
   hide_tab_bar_if_only_one_tab = true,

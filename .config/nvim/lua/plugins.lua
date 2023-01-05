@@ -105,7 +105,14 @@ require('packer').startup(function(use)
   }
 
   -- Color Scheme
-  use { "catppuccin/nvim", as = "catppuccin" }
+  use { 
+    "catppuccin/nvim", as = "catppuccin",
+    config = function()
+      require('catppuccin').setup({
+        transparent_background = true,
+      })
+    end
+  }
 
   -- CoC
   use {
@@ -118,6 +125,12 @@ require('packer').startup(function(use)
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
     end,
+    config = function()
+      require('nvim-treesitter').setup({
+        ensure_installed = { 'c', 'lua', 'rust', 'javascript', 'typescript', 'tsx' },
+        auto_install = true,
+      })
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

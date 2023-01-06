@@ -20,116 +20,18 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-
-  -- Filer
-  -- use 'lambdalisue/fern.vim'
-  use {
-    'nvim-tree/nvim-tree.lua',
-    config = function()
-      require("nvim-tree").setup({
-        hijack_cursor = true,
-        renderer = {
-          icons = {
-            webdev_colors = false,
-            show = {
-              file = false,
-            },
-            glyphs = {
-              default = '',
-              folder = {
-                default = '',
-                arrow_closed = '→',
-                arrow_open = '↓',
-                open = '',
-              },
-              git = {
-                unstaged = '✗',
-              	staged = '✓',
-              	unmerged = '>>',
-              	renamed = '➜',
-              	untracked = '★',
-              	deleted = '-',
-              	ignored = '◌',
-            	},
-            },
-          },
-        },
-        actions = {
-          open_file = {
-            quit_on_open = true,
-          },
-        },
-      })
-    end
-  }
-
-  -- Terminal
-  use({
-    'akinsho/toggleterm.nvim', tag = '*',
-    config = function()
-      require('toggleterm').setup({
-        persist_mode = false,
-      })
-    end
-  })
-
-
-  -- Tabline
-  use({
-    'crispgm/nvim-tabline',
-    config = function()
-      require('tabline').setup({})
-    end,
-  })
-
-  -- Status line
-  use {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup({
-        options = {
-          icons_enabled = false,
-          section_separators = '|',
-          component_separators = '',
-        },
-      })
-    end
-  }
-
-  -- Git sign
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-
-  -- Color Scheme
-  use { 
-    "catppuccin/nvim", as = "catppuccin",
-    config = function()
-      require('catppuccin').setup({
-        transparent_background = true,
-      })
-    end
-  }
-
-  -- CoC
-  use {
-    'neoclide/coc.nvim', branch = 'release',
-  }
-
+  use { 'nvim-tree/nvim-tree.lua' } -- Filer
+  use { 'akinsho/toggleterm.nvim', tag = '*' } -- Terminal
+  use { 'crispgm/nvim-tabline' } -- Tabline
+  use { 'nvim-lualine/lualine.nvim' } -- Status line
+  use { 'lewis6991/gitsigns.nvim' } -- Git Sign
+  use { "catppuccin/nvim", as = "catppuccin" } -- Color Scheme
+  use { 'neoclide/coc.nvim', branch = 'release' } -- CoC
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
-    end,
-    config = function()
-      require('nvim-treesitter').setup({
-        ensure_installed = { 'c', 'lua', 'rust', 'javascript', 'typescript', 'tsx' },
-        auto_install = true,
-      })
     end
   }
 

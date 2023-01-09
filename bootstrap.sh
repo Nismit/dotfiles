@@ -61,7 +61,7 @@ install_update_volta() {
 #   Arguments   : list of options, maximum of 256
 #                 "opt1" "opt2" ...
 #   Return value: selected index (0 for opt1, 1 for opt2 ...)
-function select_option {
+select_option() {
 
   # little helpers for terminal print control and key input
   ESC=$( printf "\033")

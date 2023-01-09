@@ -5,7 +5,7 @@ if not ok then
 end
 
 treesitter.setup({
-  ensure_installed = { 'c', 'lua', 'rust', 'javascript', 'typescript', 'tsx', 'html', 'css' },
+  ensure_installed = { 'c', 'lua', 'rust', 'javascript', 'typescript', 'tsx', 'html', 'css', 'glsl' },
   auto_install = true,
 })
 

@@ -18,15 +18,20 @@ require('packer').startup(function(use)
   -- Fuzzy Finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {{ 'nvim-lua/plenary.nvim' }}
   }
   use { 'nvim-tree/nvim-tree.lua' } -- Filer
   use { 'akinsho/toggleterm.nvim', tag = '*' } -- Terminal
-  use { 'crispgm/nvim-tabline' } -- Tabline
+  -- use { 'crispgm/nvim-tabline' } -- Tabline
   use { 'nvim-lualine/lualine.nvim' } -- Status line
   use { 'lewis6991/gitsigns.nvim' } -- Git Sign
   use { "catppuccin/nvim", as = "catppuccin" } -- Color Scheme
   use { 'neoclide/coc.nvim', branch = 'release' } -- CoC
+  -- Buffer line
+  use { 
+    'akinsho/bufferline.nvim', tag = 'v3.*',
+    requires = {{ 'tiagovla/scope.nvim' }}
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()

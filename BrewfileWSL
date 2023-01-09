@@ -1,0 +1,3 @@
+brew "tree"
+brew "neovim"
+brew "ripgrep"

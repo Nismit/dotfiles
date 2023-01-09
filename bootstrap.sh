@@ -120,7 +120,7 @@ select_option() {
 }
 
 echo "Select one option using up/down keys and enter to confirm:"
-echo
+echo ""
 
 options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta")
 

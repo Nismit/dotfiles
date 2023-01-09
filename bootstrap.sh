@@ -12,6 +12,10 @@ if [ -z "${BREWFILE_XCODE_PATH:-}" ]; then
   BREWFILE_XCODE_PATH=~/.dotfiles/BrewfileXcode; export BREWFILE_XCODE_PATH
 fi
 
+if [ -z "${BREWFILEPATH_WSL_PATH:-}" ]; then
+  BREWFILEPATH_WSL_PATH=~/.dotfiles/BrewfileWSL; export BREWFILEPATH_WSL_PATH
+fi
+
 # Make sure you must login to Mac App Store
 brew_bundle_install() {
   command brew bundle --file $BREWFILEPATH
@@ -27,6 +31,10 @@ brew_bundle_personal_install() {
 # Avoid regular update routine
 brew_bundle_xcode_install() {
   command brew bundle --file $BREWFILE_XCODE_PATH
+}
+
+brew_bundle_wsl() {
+  command brew bundle --file $BREWFILEPATH_WSL_PATH
 }
 
 install_update_brew() {
@@ -122,7 +130,8 @@ select_option() {
 echo "Select one option using up/down keys and enter to confirm:"
 echo ""
 
-options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta")
+options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install WSL Bunble" "Install Xcode Bundle" "Install/Update volta")
+
 
 select_option "${options[@]}"
 choice=$?
@@ -131,7 +140,8 @@ case $choice in
 0)  install_update_brew ;;
 1)  brew_bundle_install ;;
 2)  brew_bundle_personal_install ;;
-3)  brew_bundle_xcode_install ;;
-4)  install_update_volta ;;
+3)  brew_bundle_wsl ;;
+4)  brew_bundle_xcode_install ;;
+5)  install_update_volta ;;
 esac
 

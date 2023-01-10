@@ -8,9 +8,10 @@ alias gr='git remote update -p'
 alias unstage='git reset HEAD --'
 alias damn='git reset --soft HEAD^'
 alias dotfiles='cd ~/.dotfiles'
-alias bootstrap='dotfiles && sh bootstrap.sh'
+alias bootstrap='dotfiles && ./bootstrap.sh'
 
 ## Replace vi, vim to nvim
+## Disable alias temp, \command (e.g. $ \vim)
 alias vim='nvim'
 alias vi='nvim'
 
@@ -61,3 +62,8 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 ## FOR WORK
 if [ -f "${HOME}/.credentials.zsh" ]; then . "${HOME}/.credentials.zsh"; fi
+
+## FOR WSL or Linux
+if [ "$(uname 2> /dev/null)" == "Linux" ]; then
+
+fi

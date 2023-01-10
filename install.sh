@@ -41,6 +41,11 @@ dotfiles_download() {
 # Memo: rm [dir symbolic link path]
 # Memo: unlink [symbolic link path]
 dotfiles_link() {
+  # Make ~/.config/ if not exists
+  if [ ! -d ${HOME}/.config/ ]; then
+    mkdir -p ${HOME/.config
+  fi
+
   for f in $DOTPATH/.??*;
   do
     # Exclude some dotfiles
@@ -62,6 +67,27 @@ dotfiles_link() {
   done
 }
 
+dotfiles_unlink() {
+  for f in $DOTPATH/.??*;
+  do
+    [[ `basename $f` == ".git" ]] && continue
+    [[ `basename $f` == ".DS_Store" ]] && continue
+    [[ `basename $f` == ".vimrc" ]] && continue
+
+    # Search in .config dir
+    if [ -d $f ]; then
+      for g in $f/??*;
+      do
+        printf "${CYAN}Unlink ${GREEN}$g${NC}\n"
+        command unlink $HOME/.config/$g
+      done
+    else
+      printf "${CYAN}Unlink ${GREEN}$f${NC}\n"
+      command unlink $HOME/$g
+    fi
+  done
+}
+
 dotfiles_install() {
   printf "${CYAN}Install dotfiles...${NC}\n"
   dotfiles_link
@@ -71,6 +97,7 @@ dotfiles_update() {
   printf "${CYAN}Updating dotfiles...${NC}\n"
 
   command cd $DOTPATH && git pull origin master
+  dotfiles_unlink
   dotfiles_link
 }
 

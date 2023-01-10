@@ -43,7 +43,7 @@ dotfiles_download() {
 dotfiles_link() {
   # Make ~/.config/ if not exists
   if [ ! -d ${HOME}/.config/ ]; then
-    mkdir -p ${HOME/.config
+    mkdir -p ${HOME}/.config
   fi
 
   for f in $DOTPATH/.??*;
@@ -74,16 +74,15 @@ dotfiles_unlink() {
     [[ `basename $f` == ".DS_Store" ]] && continue
     [[ `basename $f` == ".vimrc" ]] && continue
 
-    # Search in .config dir
     if [ -d $f ]; then
       for g in $f/??*;
       do
         printf "${CYAN}Unlink ${GREEN}$g${NC}\n"
-        command unlink $HOME/.config/$g
+        command unlink $HOME/`basename $f`/`basename $g`
       done
     else
       printf "${CYAN}Unlink ${GREEN}$f${NC}\n"
-      command unlink $HOME/$g
+      command unlink $HOME/`basename $f`
     fi
   done
 }

@@ -198,6 +198,7 @@ dist
 commandlist.md
 Brewfile.lock.json
 BrewfilePersonal.lock.json
+BrewfileWSL.lock.json
 output/
 .credentials.zsh
 .config/nvim/plugin/*

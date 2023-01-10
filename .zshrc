@@ -64,6 +64,6 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 if [ -f "${HOME}/.credentials.zsh" ]; then . "${HOME}/.credentials.zsh"; fi
 
 ## FOR WSL or Linux
-if [ "$(uname 2> /dev/null)" == "Linux" ]; then
-
+if [ "$(uname 2> /dev/null)" = "Linux" ]; then
+ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi

@@ -17,7 +17,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
-vim.g.coc_global_extensions = { 'coc-json', 'coc-tsserver', 'coc-html', 'coc-prettier' }
+vim.g.coc_global_extensions = { 'coc-json', 'coc-tsserver', 'coc-html', 'coc-prettier', 'coc-eslint' }
 -- Mac default terminal does not support 24bit colors
 vim.opt.termguicolors = true
 local ok, _ = pcall(vim.cmd, 'colorscheme catppuccin')

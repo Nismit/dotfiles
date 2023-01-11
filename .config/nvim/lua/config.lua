@@ -30,6 +30,9 @@ end
 
 vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true }) -- disable default s on normal mode
 vim.api.nvim_set_keymap('n', 'S', '<Nop>', { noremap = true, silent = true }) -- disable default S on normal mode
+vim.api.nvim_set_keymap('n', '<ESC><ESC>', ':noh<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<leader>ic', ':s#^#//' , { noremap = true }) -- Add comment out on Visual block mode
+vim.api.nvim_set_keymap('x', '<leader>rc', ':s$^//' , { noremap = true }) -- Remove comment out on Visual block mode
 
 -- Tab
 vim.api.nvim_set_keymap('n', '<leader>st', ':tabnew<CR>', { noremap = true, silent = true })
@@ -72,9 +75,9 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 local au_filetype = vim.api.nvim_create_augroup('fileType', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   desc = 'GLSL file type',
-  pattern = '*.glsl, *.frag, *.vert',
+  pattern = { '*.frag', '*.vert', '*.glsl' },
   group = au_filetype,
-  command = 'set filetype=glsl | :TSEnable highlight',
+  command = ':set filetype=glsl | :TSEnable highlight',
 })
 
 local M = {}
@@ -97,7 +100,7 @@ local autoCommands = {
   -- other autocommands
   open_folds = {
     { 'BufReadPost, FileReadPost', '*', 'normal zR' }
-  }
+  },
 }
 
 M.nvim_create_augroups(autoCommands)

@@ -10,8 +10,9 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.mouse = "a"
 vim.opt.background = "dark"
-vim.opt.foldlevel = 50 -- Not fold
+vim.opt.foldlevel = 5
 vim.opt.hidden = true
+vim.opt.swapfile = true
 -- CoC Recommend config
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -38,6 +39,7 @@ vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
 -- Buffer
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>bp', ':bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true })
 
 -- Terminal
 vim.api.nvim_set_keymap('t', '<ESC>', [[<C-\><C-n>]], { noremap = true })
@@ -74,3 +76,28 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   group = au_filetype,
   command = 'set filetype=glsl | :TSEnable highlight',
 })
+
+local M = {}
+-- function to create a list of commands and convert them to autocommands
+-------- This function is taken from https://github.com/norcalli/nvim_utils
+function M.nvim_create_augroups(definitions)
+  for group_name, definition in pairs(definitions) do
+    vim.api.nvim_command('augroup '..group_name)
+    vim.api.nvim_command('autocmd!')
+    for _, def in ipairs(definition) do
+      local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+      vim.api.nvim_command(command)
+    end
+      vim.api.nvim_command('augroup END')
+  end
+end
+
+
+local autoCommands = {
+  -- other autocommands
+  open_folds = {
+    { 'BufReadPost, FileReadPost', '*', 'normal zR' }
+  }
+}
+
+M.nvim_create_augroups(autoCommands)

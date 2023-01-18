@@ -9,6 +9,10 @@ alias unstage='git reset HEAD --'
 alias damn='git reset --soft HEAD^'
 alias dotfiles='cd ~/.dotfiles'
 alias bootstrap='dotfiles && ./bootstrap.sh'
+alias vimrc='cd ~/.dotfiles/.config/nvim/'
+
+# Must install npm
+alias ncu='npx npm-check-updates'
 
 ## Replace vi, vim to nvim
 ## Disable alias temp, \command (e.g. $ \vim)

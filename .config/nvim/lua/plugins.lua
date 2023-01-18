@@ -23,7 +23,12 @@ require('packer').startup(function(use)
   use { 'nvim-tree/nvim-tree.lua' } -- Filer
   use { 'akinsho/toggleterm.nvim', tag = '*' } -- Terminal
   -- use { 'crispgm/nvim-tabline' } -- Tabline
-  use { 'nvim-lualine/lualine.nvim' } -- Status line
+  use { 
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+    },
+  } -- Status line
   use { 'lewis6991/gitsigns.nvim' } -- Git Sign
   use { "catppuccin/nvim", as = "catppuccin" } -- Color Scheme
   use { 'neoclide/coc.nvim', branch = 'release' } -- CoC

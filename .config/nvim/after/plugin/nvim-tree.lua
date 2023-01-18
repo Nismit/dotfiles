@@ -6,29 +6,15 @@ end
 
 nvimtree.setup({
   hijack_cursor = true,
+  view = {
+    width = 35,
+  },
   renderer = {
+    highlight_git = true,
+    highlight_modified = 'name',
     icons = {
-      webdev_colors = false,
       show = {
-        file = false,
-      },
-      glyphs = {
-        default = '',
-        folder = {
-          default = '',
-          arrow_closed = '→',
-          arrow_open = '↓',
-          open = '',
-        },
-        git = {
-          unstaged = '✗',
-          staged = '✓',
-          unmerged = '>>',
-          renamed = '➜',
-          untracked = '★',
-          deleted = '-',
-          ignored = '◌',
-        },
+        git = true,
       },
     },
   },

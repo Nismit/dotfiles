@@ -1,11 +1,27 @@
-local ok, treesitter = pcall(require, 'nvim-treesitter')
+local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
 
 if not ok then
   return
 end
 
 treesitter.setup({
-  ensure_installed = { 'c', 'lua', 'rust', 'javascript', 'typescript', 'tsx', 'html', 'css', 'glsl' },
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = tue,
+  },
+  ensure_installed = {
+    'c',
+    'lua',
+    'rust',
+    'javascript',
+    'typescript',
+    'tsx',
+    'html',
+    'css',
+    'glsl'
+  },
   auto_install = true,
 })
 

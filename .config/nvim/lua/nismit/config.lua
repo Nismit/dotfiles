@@ -26,6 +26,14 @@ if not ok then
   vim.cmd 'colorscheme default'
 end
 
+-- WSL2 copy to clipboard
+vim.cmd [[
+  augroup Yank
+  autocmd!
+  autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
+  augroup END
+]]
+
 -- Keymaps
 
 vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true }) -- disable default s on normal mode

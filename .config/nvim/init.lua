@@ -1,9 +1,16 @@
-require "config"
-require "plugins"
+require "nismit.config"
+require "nismit.plugins"
 
--- Packer will be generated /plugin/packer_compiled.lua 
+local has = vim.fn.has
+local is_mac = has "macunix"
+local is_wsl = has "wsl"
 
+if is_wsl == 1 then
+  require "nismit.wsl"
+end
+
+-- Packer will be generated /plugin/packer_compiled.lua
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "plugins.lua" },
+  pattern = { "nismit/plugins.lua" },
   command = "source <afile> | PackerCompile",
 })

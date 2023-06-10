@@ -1,17 +1,28 @@
 # Dotfiles
 
 ## Usage
+
 ```bash
 bash -c "$(curl -L raw.githubusercontent.com/Nismit/dotfiles/master/install.sh)"
 ```
 
 ## Install/Update Homebrew/volta
+
 ```bash
 # .zshrc has an alias to execute bootstrap script
 bootstrap
 ```
 
+## For WSL
+
+To use this dotfiles on WSL(Windows Subsystem for Linux), recommend to install [win32yank](https://github.com/equalsraf/win32yank) for copy & paste on nvim.
+
+### Windows Terminal
+
+Recommend to install the patched nerd fonts for displaying the icons. [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+
 ## Troubleshooting
+
 After install the dotfiles, then you might get this message when you opened the terminal.
 
 ```

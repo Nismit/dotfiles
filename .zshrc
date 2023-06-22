@@ -19,6 +19,9 @@ alias ncu='npx npm-check-updates'
 alias vim='nvim'
 alias vi='nvim'
 
+## For WSL update
+alias wslupdate='sudo apt update && sudo apt upgrade -y'
+
 ## History
 HISTFILE=~/.zsh_history
 HISTSIZE=20000

@@ -26,14 +26,6 @@ if not ok then
   vim.cmd 'colorscheme default'
 end
 
--- WSL2 copy to clipboard
-vim.cmd [[
-  augroup Yank
-  autocmd!
-  autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
-  augroup END
-]]
-
 -- Keymaps
 
 vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true }) -- disable default s on normal mode
@@ -44,8 +36,8 @@ vim.api.nvim_set_keymap('x', '<leader>rc', ':s$^//' , { noremap = true }) -- Rem
 
 -- Tab
 vim.api.nvim_set_keymap('n', '<leader>st', ':tabnew<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Tab>', 'gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Tab>', 'gt', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
 
 -- Buffer
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
@@ -64,6 +56,12 @@ vim.api.nvim_set_keymap('n', '<leader>s<Left>', '<C-w><Left><CR>', { noremap = t
 vim.api.nvim_set_keymap('n', '<leader>s<Right>', '<C-w><Right><CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>s<Up>', '<C-w><Up><CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>s<Down>', '<C-w><Down><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sh', '<C-w><Left><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sl', '<C-w><Right><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sk', '<C-w><Up><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>sj', '<C-w><Down><CR>', { noremap = true, silent = true })
+
+
 
 -- Plugins
 vim.api.nvim_set_keymap('n', '<leader>j', ':ToggleTerm<CR>', { noremap = true, silent = true })

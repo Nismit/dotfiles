@@ -1,53 +1,59 @@
--- packer.nvim bootstrap
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-  -- Fuzzy Finder
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = {{ 'nvim-lua/plenary.nvim' }}
-  }
-  use { 'nvim-tree/nvim-tree.lua' } -- Filer
-  use { 'akinsho/toggleterm.nvim', tag = '*' } -- Terminal
-  -- use { 'crispgm/nvim-tabline' } -- Tabline
-  use { 
-    'nvim-lualine/lualine.nvim',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  } -- Status line
-  use { 'lewis6991/gitsigns.nvim' } -- Git Sign
-  use { "catppuccin/nvim", as = "catppuccin" } -- Color Scheme
-  use { 'neoclide/coc.nvim', branch = 'release' } -- CoC
-  -- Buffer line
-  use { 
-    'akinsho/bufferline.nvim', tag = 'v3.*',
-    requires = {{ 'tiagovla/scope.nvim' }}
-  }
-  use {
+require("lazy").setup({
+  {
+    'catppuccin/nvim',
+    lazy = false,
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      vim.cmd([[colorscheme catppuccin]])
+    end,
+  }, -- Color Scheme
+  {
+    'neoclide/coc.nvim',
+    branch = 'release'
+  }, -- CoC
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
+    config = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
-    end
-  }
+    end,
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.4',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+  },
+  { 'nvim-tree/nvim-tree.lua' }, -- Filer
+  { 'akinsho/toggleterm.nvim' }, -- Terminal
+  { 'lewis6991/gitsigns.nvim' }, -- Git Sign
+  {
+    'crispgm/nvim-tabline',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = true,
+  }, -- Tabline
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+  }, -- Status line
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+})

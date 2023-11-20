@@ -13,6 +13,8 @@ vim.opt.background = "dark"
 vim.opt.foldlevel = 5
 vim.opt.hidden = true
 vim.opt.swapfile = true
+-- Tabline (always display the tab)
+vim.opt.showtabline = 2
 -- CoC Recommend config
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -36,13 +38,13 @@ vim.api.nvim_set_keymap('x', '<leader>rc', ':s$^//' , { noremap = true }) -- Rem
 
 -- Tab
 vim.api.nvim_set_keymap('n', '<leader>st', ':tabnew<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<Tab>', 'gt', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Tab>', 'gt', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
 
 -- Buffer
-vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>bp', ':bnext<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>bp', ':bnext<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true })
 
 -- Terminal
 vim.api.nvim_set_keymap('t', '<ESC>', [[<C-\><C-n>]], { noremap = true })

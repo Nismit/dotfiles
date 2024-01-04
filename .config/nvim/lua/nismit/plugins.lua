@@ -42,18 +42,29 @@ require("lazy").setup({
   { 'nvim-tree/nvim-tree.lua' }, -- Filer
   { 'akinsho/toggleterm.nvim' }, -- Terminal
   { 'lewis6991/gitsigns.nvim' }, -- Git Sign
+--  {
+--    'crispgm/nvim-tabline',
+--    dependencies = {
+--      'nvim-tree/nvim-web-devicons',
+--    },
+--    config = true,
+--  }, -- Tabline
   {
-    'crispgm/nvim-tabline',
+    'akinsho/bufferline.nvim',
+    version = "*",
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons'
     },
-    config = true,
-  }, -- Tabline
+  }, -- Bufferline
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
   }, -- Status line
-
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
+  },
 })

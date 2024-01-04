@@ -37,14 +37,16 @@ vim.api.nvim_set_keymap('x', '<leader>ic', ':s#^#//' , { noremap = true }) -- Ad
 vim.api.nvim_set_keymap('x', '<leader>rc', ':s$^//' , { noremap = true }) -- Remove comment out on Visual block mode
 
 -- Tab
-vim.api.nvim_set_keymap('n', '<leader>st', ':tabnew<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Tab>', 'gt', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>st', ':tabnew<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Tab>', 'gt', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<S-Tab>', 'gT', { noremap = true, silent = true })
 
 -- Buffer
--- vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>bp', ':bnext<CR>', { noremap = true })
--- vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<tab>', ':bNext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<S-tab>', ':bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bp', ':bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true })
 
 -- Terminal
 vim.api.nvim_set_keymap('t', '<ESC>', [[<C-\><C-n>]], { noremap = true })

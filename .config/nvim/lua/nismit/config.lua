@@ -13,8 +13,6 @@ vim.opt.background = "dark"
 vim.opt.foldlevel = 5
 vim.opt.hidden = true
 vim.opt.swapfile = true
--- Tabline (always display the tab)
-vim.opt.showtabline = 2
 -- CoC Recommend config
 vim.opt.backup = false
 vim.opt.writebackup = false

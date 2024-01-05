@@ -11,30 +11,21 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+local plugins = {
   {
     'catppuccin/nvim',
     lazy = false,
     name = 'catppuccin',
     priority = 1000,
-    config = function()
-      vim.cmd([[colorscheme catppuccin]])
-    end,
   }, -- Color Scheme
   {
     'neoclide/coc.nvim',
     branch = 'release'
   }, -- CoC
-  {
-    'nvim-treesitter/nvim-treesitter',
-    config = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
-  },
+  { 'nvim-treesitter/nvim-treesitter' },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.4',
+    tag = '0.1.5',
     dependencies = {
       'nvim-lua/plenary.nvim'
     },
@@ -67,4 +58,12 @@ require("lazy").setup({
     main = 'ibl',
     opts = {},
   },
-})
+}
+
+local opts = {
+  install = {
+    colorscheme = { 'catppuccin' },
+  },
+}
+
+require("lazy").setup(plugins, opts);

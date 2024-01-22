@@ -12,6 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  { 'nvim-treesitter/nvim-treesitter' }, -- Tree Sitter
+  { 'nvim-tree/nvim-tree.lua' }, -- Filer
+  { 'akinsho/toggleterm.nvim' }, -- Terminal
+  { 'lewis6991/gitsigns.nvim' }, -- Git Sign
+  { 'folke/which-key.nvim' }, -- Key bind Helper
   {
     'catppuccin/nvim',
     lazy = false,
@@ -22,7 +27,6 @@ local plugins = {
     'neoclide/coc.nvim',
     branch = 'release'
   }, -- CoC
-  { 'nvim-treesitter/nvim-treesitter' },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
@@ -30,16 +34,6 @@ local plugins = {
       'nvim-lua/plenary.nvim'
     },
   },
-  { 'nvim-tree/nvim-tree.lua' }, -- Filer
-  { 'akinsho/toggleterm.nvim' }, -- Terminal
-  { 'lewis6991/gitsigns.nvim' }, -- Git Sign
---  {
---    'crispgm/nvim-tabline',
---    dependencies = {
---      'nvim-tree/nvim-web-devicons',
---    },
---    config = true,
---  }, -- Tabline
   {
     'akinsho/bufferline.nvim',
     version = "*",

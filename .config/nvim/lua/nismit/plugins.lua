@@ -52,6 +52,29 @@ local plugins = {
     main = 'ibl',
     opts = {},
   },
+  {
+    'gennaro-tedesco/nvim-possession',
+    dependencies = {
+      { 'junegunn/fzf', build = "./install --bin" },
+      'ibhagwan/fzf-lua',
+    },
+    config = true,
+    init = function()
+      local possession = require('nvim-possession')
+      vim.keymap.set("n", "<leader>sl", function()
+        possession.list()
+      end, { desc = 'Open sessions list' })
+      vim.keymap.set("n", "<leader>sn", function()
+        possession.new()
+      end, { desc = 'Save new session' })
+      vim.keymap.set("n", "<leader>su", function()
+        possession.update()
+      end, { desc = 'Update session' })
+      vim.keymap.set("n", "<leader>sd", function()
+        possession.delete()
+      end, { desc = 'Delete session' })
+    end,
+  },
 }
 
 local opts = {

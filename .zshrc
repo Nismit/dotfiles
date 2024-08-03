@@ -69,6 +69,9 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 ## FOR WORK
 if [ -f "${HOME}/.credentials.zsh" ]; then . "${HOME}/.credentials.zsh"; fi
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ## FOR WSL or Linux
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then

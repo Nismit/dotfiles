@@ -7,6 +7,7 @@ brew "tree"
 brew "neovim"
 brew "ripgrep"
 
+cask "amethyst"
 cask "google-chrome"
 cask "firefox"
 cask "visual-studio-code"

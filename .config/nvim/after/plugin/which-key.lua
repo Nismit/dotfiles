@@ -4,8 +4,11 @@ if not ok then
   return
 end
 
-whichKey.register {
-  ['<leader>s'] = { name = '[S]creen[sv|hjkl]', _ = 'which_key_ignore' },
-}
+whichKey.add({
+  {
+    { '<leader>s', group = '[S]creen[sv|hjkl]' },
+    { '<leader>s_', hidden = true },
+  }
+})
 
 

@@ -17,6 +17,7 @@ local plugins = {
   { 'akinsho/toggleterm.nvim' }, -- Terminal
   { 'lewis6991/gitsigns.nvim' }, -- Git Sign
   { 'folke/which-key.nvim' }, -- Key bind Helper
+  { 'numToStr/Comment.nvim' }, -- Comment out toggle
   {
     'catppuccin/nvim',
     lazy = false,
@@ -24,9 +25,20 @@ local plugins = {
     priority = 1000,
   }, -- Color Scheme
   {
-    'neoclide/coc.nvim',
-    branch = 'release'
-  }, -- CoC
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+    },
+  },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+    },
+  }, -- LSP Config enhancement
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',

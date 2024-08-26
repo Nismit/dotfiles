@@ -18,7 +18,6 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
-vim.g.coc_global_extensions = { 'coc-json', 'coc-tsserver', 'coc-html', 'coc-prettier', 'coc-eslint' }
 -- Mac default terminal does not support 24bit colors
 vim.opt.termguicolors = true
 local ok, _ = pcall(vim.cmd, 'colorscheme catppuccin')
@@ -26,13 +25,13 @@ if not ok then
   vim.cmd 'colorscheme default'
 end
 
+local M = {}
+
 -- Keymaps
 
 vim.api.nvim_set_keymap('n', 's', '<Nop>', { noremap = true, silent = true }) -- disable default s on normal mode
 vim.api.nvim_set_keymap('n', 'S', '<Nop>', { noremap = true, silent = true }) -- disable default S on normal mode
 vim.api.nvim_set_keymap('n', '<ESC><ESC>', ':noh<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<leader>ic', ':s#^#//' , { noremap = true }) -- Add comment out on Visual block mode
-vim.api.nvim_set_keymap('x', '<leader>rc', ':s$^//' , { noremap = true }) -- Remove comment out on Visual block mode
 
 -- Tab
 -- vim.api.nvim_set_keymap('n', '<leader>st', ':tabnew<CR>', { noremap = true, silent = true })
@@ -88,7 +87,6 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   command = ':set filetype=glsl | :TSEnable highlight',
 })
 
-local M = {}
 -- function to create a list of commands and convert them to autocommands
 -------- This function is taken from https://github.com/norcalli/nvim_utils
 function M.nvim_create_augroups(definitions)

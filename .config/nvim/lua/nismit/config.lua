@@ -13,7 +13,6 @@ vim.opt.background = "dark"
 vim.opt.foldlevel = 5
 vim.opt.hidden = true
 vim.opt.swapfile = true
--- CoC Recommend config
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.updatetime = 300
@@ -45,9 +44,6 @@ vim.api.nvim_set_keymap('n', '<leader>bn', ':bNext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>bp', ':bnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bd<CR>', { noremap = true })
 
--- Terminal
-vim.api.nvim_set_keymap('t', '<ESC>', [[<C-\><C-n>]], { noremap = true })
-
 -- Screen
 -- vim.api.nvim_set_keymap('n', '<leader>sj', '<C-w>j', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>sk', '<C-w>k', { noremap = true, silent = true })
@@ -62,10 +58,7 @@ vim.api.nvim_set_keymap('n', '<leader>sl', '<C-w><Right><CR>', { noremap = true,
 vim.api.nvim_set_keymap('n', '<leader>sk', '<C-w><Up><CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sj', '<C-w><Down><CR>', { noremap = true, silent = true })
 
-
-
 -- Plugins
-vim.api.nvim_set_keymap('n', '<leader>j', ':ToggleTerm<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<C-p>', ':Telescope find_files<CR>', { noremap = true, silent = true })

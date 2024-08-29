@@ -14,7 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   { 'nvim-treesitter/nvim-treesitter' }, -- Tree Sitter
   { 'nvim-tree/nvim-tree.lua' }, -- Filer
-  { 'akinsho/toggleterm.nvim' }, -- Terminal
   { 'lewis6991/gitsigns.nvim' }, -- Git Sign
   { 'folke/which-key.nvim' }, -- Key bind Helper
   { 'numToStr/Comment.nvim' }, -- Comment out toggle
@@ -63,30 +62,7 @@ local plugins = {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {},
-  },
-  {
-    'gennaro-tedesco/nvim-possession',
-    dependencies = {
-      { 'junegunn/fzf', build = "./install --bin" },
-      'ibhagwan/fzf-lua',
-    },
-    config = true,
-    init = function()
-      local possession = require('nvim-possession')
-      vim.keymap.set("n", "<leader>sl", function()
-        possession.list()
-      end, { desc = 'Open sessions list' })
-      vim.keymap.set("n", "<leader>sn", function()
-        possession.new()
-      end, { desc = 'Save new session' })
-      vim.keymap.set("n", "<leader>su", function()
-        possession.update()
-      end, { desc = 'Update session' })
-      vim.keymap.set("n", "<leader>sd", function()
-        possession.delete()
-      end, { desc = 'Delete session' })
-    end,
-  },
+  }, -- Indent
 }
 
 local opts = {

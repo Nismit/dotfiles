@@ -6,7 +6,7 @@ end
 
 bufferline.setup({
   options = {
-    diagnostics = 'coc',
+    diagnostics = 'nvim_lsp',
     always_show_bufferline = true,
     color_icons = true,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)

@@ -3,6 +3,8 @@ local config = wezterm.config_builder()
 
 -- Enable Japanese IME
 config.use_ime = true
+-- Managed by brew
+config.check_for_updates = false
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 20
 config.initial_rows = 35

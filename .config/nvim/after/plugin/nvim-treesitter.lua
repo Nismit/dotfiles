@@ -9,7 +9,7 @@ treesitter.setup({
     enable = true,
   },
   indent = {
-    enable = tue,
+    enable = true,
   },
   ensure_installed = {
     'c',

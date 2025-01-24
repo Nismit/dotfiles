@@ -1,6 +1,6 @@
 [user]
   name = Nismit
-  email = nismit.dev@gmail.com
+  email = 22581499+Nismit@users.noreply.github.com
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -27,3 +27,5 @@
 #   log = diff-highlight | less
 #   show = diff-highlight | less
 #   diff = diff-highlight | less
+[credential]
+  helper = osxkeychain

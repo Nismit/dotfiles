@@ -1,5 +1,3 @@
-tap "homebrew/cask"
-tap "homebrew/cask-drivers"
 cask_args appdir: "/Applications"
 
 brew "mas"

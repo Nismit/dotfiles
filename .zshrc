@@ -66,6 +66,9 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+## Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 
 ## FOR WORK
 if [ -f "${HOME}/.credentials.zsh" ]; then . "${HOME}/.credentials.zsh"; fi

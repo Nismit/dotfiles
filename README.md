@@ -13,6 +13,14 @@ bash -c "$(curl -L raw.githubusercontent.com/Nismit/dotfiles/master/install.sh)"
 bootstrap
 ```
 
+## After Setup
+
+git remote url might set https instead of git
+
+```bash
+git remote set-url origin git@github.com:Nismit/dotfiles.git
+```
+
 ## For WSL
 
 To use this dotfiles on WSL(Windows Subsystem for Linux), recommend to install [win32yank](https://github.com/equalsraf/win32yank) for copy & paste on nvim.

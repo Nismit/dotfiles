@@ -28,16 +28,16 @@ require("mason-lspconfig").setup({
     'ts_ls',
   },
 })
-require("mason-lspconfig").setup_handlers {
-  function (server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup {
-      -- register key configs, etc
-      on_attach = on_attach,
-      -- connect to cmp plugins
-      capabilities = capabilities,
-    }
-  end,
-}
+-- require("mason-lspconfig").setup_handlers {
+--   function (server_name) -- default handler (optional)
+--     require("lspconfig")[server_name].setup {
+--       -- register key configs, etc
+--       on_attach = on_attach,
+--       -- connect to cmp plugins
+--       capabilities = capabilities,
+--     }
+--   end,
+-- }
 
 lspconfig.lua_ls.setup {
   settings = {

@@ -1,8 +1,5 @@
 cask_args appdir: "/Applications"
 
-brew "ffmpeg"
-brew "deno"
-
 cask "discord"
 cask "appcleaner"
 cask "windows-app"

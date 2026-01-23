@@ -14,6 +14,7 @@ config.window_decorations = 'RESIZE'
 config.font_size = 15.0
 config.adjust_window_size_when_changing_font_size = false
 config.color_scheme = 'iceberg-dark'
+config.font = wezterm.font("Moralerspace Neon", { weight = "Regular" })
 
 local function segments_for_right_status(window)
   return {

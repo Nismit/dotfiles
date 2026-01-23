@@ -12,9 +12,6 @@ if [ -z "${BREWFILE_XCODE_PATH:-}" ]; then
   BREWFILE_XCODE_PATH=~/.dotfiles/BrewfileXcode; export BREWFILE_XCODE_PATH
 fi
 
-if [ -z "${BREWFILEPATH_WSL_PATH:-}" ]; then
-  BREWFILEPATH_WSL_PATH=~/.dotfiles/BrewfileWSL; export BREWFILEPATH_WSL_PATH
-fi
 
 # Make sure you must login to Mac App Store
 brew_bundle_install() {
@@ -33,9 +30,6 @@ brew_bundle_xcode_install() {
   command brew bundle --file $BREWFILE_XCODE_PATH
 }
 
-brew_bundle_wsl() {
-  command brew bundle --file $BREWFILEPATH_WSL_PATH
-}
 
 install_update_brew() {
   if [ ! -x "`which brew`" ]; then
@@ -60,6 +54,34 @@ install_update_volta() {
     # just re-run installer then it will be updated
     curl https://get.volta.sh | bash
   fi
+}
+
+install_nix() {
+  if [ ! -x "$(command -v nix)" ]; then
+    echo "Installing Nix... >"
+    curl -L https://nixos.org/nix/install | sh
+    echo "Please run 'source /etc/zshrc' to enable Nix"
+  else
+    echo "Nix is already installed"
+  fi
+
+  # Create nix.conf if not exists
+  if [ ! -f "$HOME/.config/nix/nix.conf" ]; then
+    echo "Creating nix.conf... >"
+    mkdir -p "$HOME/.config/nix"
+    echo 'experimental-features = nix-command flakes' > "$HOME/.config/nix/nix.conf"
+  fi
+
+  # Run home-manager for the first time
+  echo "Running home-manager initial setup... >"
+  cd ~/.dotfiles
+  nix run home-manager/master -- switch --flake .#default --impure
+}
+
+home_manager_switch() {
+  echo "Running home-manager switch... >"
+  cd ~/.dotfiles
+  nix run home-manager/master -- switch --flake .#default --impure
 }
 
 # Ref: https://unix.stackexchange.com/questions/146570/arrow-key-enter-menu
@@ -130,7 +152,7 @@ select_option() {
 echo "Select one option using up/down keys and enter to confirm:"
 echo ""
 
-options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install WSL Bunble" "Install Xcode Bundle" "Install/Update volta")
+options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta" "Setup Nix (Initial)" "Home Manager Switch")
 
 
 select_option "${options[@]}"
@@ -140,8 +162,9 @@ case $choice in
 0)  install_update_brew ;;
 1)  brew_bundle_install ;;
 2)  brew_bundle_personal_install ;;
-3)  brew_bundle_wsl ;;
-4)  brew_bundle_xcode_install ;;
-5)  install_update_volta ;;
+3)  brew_bundle_xcode_install ;;
+4)  install_update_volta ;;
+5)  install_nix ;;
+6)  home_manager_switch ;;
 esac
 

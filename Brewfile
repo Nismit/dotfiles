@@ -1,9 +1,6 @@
 cask_args appdir: "/Applications"
 
 brew "mas"
-brew "tree"
-brew "neovim"
-brew "ripgrep"
 
 cask "amethyst"
 cask "google-chrome"

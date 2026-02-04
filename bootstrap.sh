@@ -60,7 +60,11 @@ install_nix() {
   if [ ! -x "$(command -v nix)" ]; then
     echo "Installing Nix... >"
     curl -L https://nixos.org/nix/install | sh
-    echo "Please run 'source /etc/zshrc' to enable Nix"
+
+    # Source Nix environment for current session
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
   else
     echo "Nix is already installed"
   fi

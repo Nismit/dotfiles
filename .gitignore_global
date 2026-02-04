@@ -203,5 +203,3 @@ output/
 .credentials.zsh
 # For Packer
 .config/nvim/plugin/*
-# For lazy
-.config/nvim/lazy-lock.json

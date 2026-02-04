@@ -1,57 +1,51 @@
-local ok, lspconfig = pcall(require, 'lspconfig')
+-- LSP keymaps on attach
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local set = vim.keymap.set
+    local opts = { buffer = args.buf }
+    set("n", "gd", vim.lsp.buf.definition, opts)
+    set("n", "K", vim.lsp.buf.hover, opts)
+    set("n", "<C-m>", vim.lsp.buf.signature_help, opts)
+    set("n", "gy", vim.lsp.buf.type_definition, opts)
+    set("n", "rn", vim.lsp.buf.rename, opts)
+    set("n", "ma", vim.lsp.buf.code_action, opts)
+    set("n", "gr", vim.lsp.buf.references, opts)
+    set("n", "<space>e", vim.diagnostic.open_float, opts)
+    set("n", "[d", vim.diagnostic.goto_prev, opts)
+    set("n", "]d", vim.diagnostic.goto_next, opts)
+  end,
+})
 
-if not ok then
-  return
-end
-
-local on_attach = function(client)
-  local set = vim.keymap.set
-  set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-  set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-  set("n", "<C-m>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-  set("n", "gy", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-  set("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-  set("n", "ma", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  set("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-  set("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>")
-  set("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>")
-end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- Mason setup for LSP server installation
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    'lua_ls',
-    'rust_analyzer',
-    'glsl_analyzer',
-    'ts_ls',
+    "lua_ls",
+    "rust_analyzer",
+    "glsl_analyzer",
+    "ts_ls",
   },
+  automatic_enable = true,
 })
--- require("mason-lspconfig").setup_handlers {
---   function (server_name) -- default handler (optional)
---     require("lspconfig")[server_name].setup {
---       -- register key configs, etc
---       on_attach = on_attach,
---       -- connect to cmp plugins
---       capabilities = capabilities,
---     }
---   end,
--- }
 
-lspconfig.lua_ls.setup {
+-- LSP server configurations
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       runtime = {
-        version = 'LuaJIT',
+        version = "LuaJIT",
       },
       diagnostics = {
         globals = {
-          'vim',
-          'require',
+          "vim",
+          "require",
         },
       },
     },
   },
-}
+})
 
+-- Enable cmp_nvim_lsp capabilities for all servers
+vim.lsp.config("*", {
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})

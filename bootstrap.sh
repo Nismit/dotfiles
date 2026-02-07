@@ -88,6 +88,14 @@ home_manager_switch() {
   nix run home-manager/master -- switch --flake .#default --impure
 }
 
+nix_update() {
+  echo "Updating flake.lock... >"
+  cd ~/.dotfiles
+  nix flake update
+  echo "Running home-manager switch... >"
+  nix run home-manager/master -- switch --flake .#default --impure
+}
+
 # Ref: https://unix.stackexchange.com/questions/146570/arrow-key-enter-menu
 # Renders a text based list of options that can be selected by the
 # user using up, down and enter keys and returns the chosen option.
@@ -156,7 +164,7 @@ select_option() {
 echo "Select one option using up/down keys and enter to confirm:"
 echo ""
 
-options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta" "Setup Nix (Initial)" "Home Manager Switch")
+options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta" "Setup Nix (Initial)" "Apply Dotfiles Config" "Update Nix Packages")
 
 
 select_option "${options[@]}"
@@ -170,5 +178,6 @@ case $choice in
 4)  install_update_volta ;;
 5)  install_nix ;;
 6)  home_manager_switch ;;
+7)  nix_update ;;
 esac
 

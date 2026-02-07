@@ -1,0 +1,49 @@
+name: Tag Nix Update
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'flake.lock'
+  workflow_dispatch:
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create and push tag
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          BASE_TAG="nix-${DATE}"
+
+          # Check for existing tags with same date
+          EXISTING_TAGS=$(git tag -l "${BASE_TAG}*" | sort -V)
+
+          if [ -z "$EXISTING_TAGS" ]; then
+            TAG="${BASE_TAG}"
+          else
+            # Find the highest suffix number
+            LAST_TAG=$(echo "$EXISTING_TAGS" | tail -1)
+            if [ "$LAST_TAG" = "$BASE_TAG" ]; then
+              TAG="${BASE_TAG}-2"
+            else
+              # Extract suffix number and increment
+              SUFFIX=$(echo "$LAST_TAG" | sed "s/${BASE_TAG}-//")
+              NEXT=$((SUFFIX + 1))
+              TAG="${BASE_TAG}-${NEXT}"
+            fi
+          fi
+
+          echo "Creating tag: ${TAG}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "${TAG}" -m "Nix flake update ${DATE}"
+          git push origin "${TAG}"

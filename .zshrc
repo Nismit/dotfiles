@@ -1,3 +1,8 @@
+## tmux auto start
+if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]; then
+  tmux attach -t main || tmux new -s main
+fi
+
 ## Alias
 alias ..='cd ..'
 alias ll='ls -l'
@@ -52,12 +57,11 @@ zstyle ':vcs_info:*' actionformats '%F{red}(%b(%a)%c%u)%f'
 
 function precmd() {
   LANG=en_US.UTF-8 vcs_info
-  EMOJI=$'\U1F389'
 
   if [[ -z ${vcs_info_msg_0_} ]]; then
-    PROMPT="%F{green}%~%f ${EMOJI} "
+    PROMPT="%F{green}%~%f > "
   else
-    PROMPT="%F{green}%~%f ${vcs_info_msg_0_} ${EMOJI} "
+    PROMPT="%F{green}%~%f ${vcs_info_msg_0_} > "
   fi
 }
 

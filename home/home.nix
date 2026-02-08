@@ -19,5 +19,7 @@
     ripgrep
     ffmpeg
     deno
+    mosh
+    tmux
   ];
 }

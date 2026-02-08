@@ -1,5 +1,5 @@
-## tmux auto start
-if command -v tmux &> /dev/null && [[ -z "$TMUX" ]]; then
+## tmux auto start (skip in WezTerm)
+if command -v tmux &> /dev/null && [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" != "WezTerm" ]]; then
   tmux attach -t main || tmux new -s main
 fi
 

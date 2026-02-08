@@ -66,6 +66,8 @@ function precmd() {
 }
 
 ## EXPORTS
+export LANG="ja_JP.UTF-8"
+export LC_ALL="ja_JP.UTF-8"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"

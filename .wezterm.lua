@@ -76,6 +76,7 @@ end)
 -- config.debug_key_events = true
 -- config.leader = { key = '\u{10}', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
+  { key = 'k', mods = 'CMD', action = wezterm.action.ClearScrollback 'ScrollbackAndViewport' },
 }
 
 return config

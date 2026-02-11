@@ -1,6 +1,6 @@
-## tmux auto start (skip in WezTerm)
-if command -v tmux &> /dev/null && [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" != "WezTerm" ]]; then
-  tmux attach -t main || tmux new -s main
+## tmux auto start (only in Apple Terminal)
+if command -v tmux &> /dev/null && [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+  tmux attach -t main || tmux -u new -s main
 fi
 
 ## Alias
@@ -66,8 +66,10 @@ function precmd() {
 }
 
 ## EXPORTS
-# export LANG="ja_JP.UTF-8"
-# export LC_ALL="ja_JP.UTF-8"
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] || [[ "$TERM_PROGRAM" == "tmux" ]]; then
+  export LANG="ja_JP.UTF-8"
+  export LC_ALL="ja_JP.UTF-8"
+fi
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"

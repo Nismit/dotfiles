@@ -7,6 +7,7 @@
     ./wezterm.nix
     ./editorconfig.nix
     ./nvim.nix
+    ./tmux.nix
   ];
 
   home.username = builtins.getEnv "USER";

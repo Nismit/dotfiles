@@ -38,13 +38,42 @@ setopt hist_ignore_all_dups
 # Share history all terminal
 setopt share_history
 
+## History Search Keybindings
+# Ctrl+R for incremental search
+bindkey '^R' history-incremental-search-backward
+# Up/Down arrows search history starting with current input
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
 ## Completion
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 autoload -U compinit
 compinit
+# Case-insensitive matching
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# Enable menu selection with Tab
+zstyle ':completion:*' menu select
+# Colorize completion list
+zstyle ':completion:*' list-colors ''
 
-## Typo Correction
-setopt correct
+## Directory Navigation
+# Change directory without cd
+setopt auto_cd
+# Enable directory stack with cd -<TAB>
+setopt auto_pushd
+setopt pushd_ignore_dups
+
+## Typo Correction (includes arguments)
+setopt correct_all
+
+## Glob
+# Enable extended glob patterns
+setopt extended_glob
 
 ## PROMPT
 autoload -Uz vcs_info
@@ -66,7 +95,7 @@ function precmd() {
 }
 
 ## EXPORTS
-if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] || [[ "$TERM_PROGRAM" == "tmux" ]]; then
+if [[ -n "$SSH_CONNECTION" ]] || [[ -n "$SSH_CLIENT" ]]; then
   export LANG="ja_JP.UTF-8"
   export LC_ALL="ja_JP.UTF-8"
 fi

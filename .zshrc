@@ -24,6 +24,11 @@ alias ncu='npx npm-check-updates'
 alias vim='nvim'
 alias vi='nvim'
 
+## gh CLI wrapper (ignore GH_TOKEN from gcloud credential manager)
+gh() {
+  GH_TOKEN= command gh "$@"
+}
+
 ## For WSL update
 alias wslupdate='sudo apt update && sudo apt upgrade -y'
 

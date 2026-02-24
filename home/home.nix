@@ -22,5 +22,6 @@
     deno
     mosh
     tmux
+    gh
   ];
 }

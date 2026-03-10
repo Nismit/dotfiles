@@ -23,5 +23,6 @@
     mosh
     tmux
     gh
+    mise
   ];
 }

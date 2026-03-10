@@ -24,6 +24,9 @@ alias ncu='npx npm-check-updates'
 alias vim='nvim'
 alias vi='nvim'
 
+# Claude Code (fixed opus 4.5 for now)
+alias claude='claude --model claude-opus-4-5-20251101'
+
 ## gh CLI wrapper (ignore GH_TOKEN from gcloud credential manager)
 gh() {
   GH_TOKEN= command gh "$@"
@@ -110,6 +113,11 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 ## Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+## mise (runtime version manager)
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
 
 
 ## FOR WORK

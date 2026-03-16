@@ -125,7 +125,7 @@ if [ -f "${HOME}/.credentials.zsh" ]; then . "${HOME}/.credentials.zsh"; fi
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
 
 ## FOR WSL or Linux
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then

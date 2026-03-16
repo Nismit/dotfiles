@@ -24,5 +24,8 @@
     tmux
     gh
     mise
+
+    # For work
+    jdk21
   ];
 }

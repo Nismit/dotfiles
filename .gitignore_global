@@ -203,3 +203,6 @@ output/
 .credentials.zsh
 # For Packer
 .config/nvim/plugin/*
+
+# claude
+.claude/settings.local.json

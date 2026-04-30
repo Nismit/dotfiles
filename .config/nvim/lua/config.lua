@@ -3,6 +3,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.clipboard = "unnamedplus"
@@ -19,6 +20,10 @@ vim.opt.writebackup = false
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
+vim.opt.cursorline = true
+vim.opt.scrolloff = 8
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
@@ -38,6 +43,12 @@ set("n", "<leader>sh", "<C-w>h", { silent = true })
 set("n", "<leader>sl", "<C-w>l", { silent = true })
 set("n", "<leader>sk", "<C-w>k", { silent = true })
 set("n", "<leader>sj", "<C-w>j", { silent = true })
+
+set("n", "<leader>w", ":w<CR>")
+set("n", "<A-j>", ":m .+1<CR>==", { silent = true })
+set("n", "<A-k>", ":m .-2<CR>==", { silent = true })
+set("v", "<A-j>", ":m '>+1<CR>gv=gv", { silent = true })
+set("v", "<A-k>", ":m '<-2<CR>gv=gv", { silent = true })
 
 set("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 set("n", "<leader>n", ":NvimTreeFocus<CR>", { silent = true })

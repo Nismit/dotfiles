@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -31,19 +31,19 @@ local plugins = {
     },
   },
   {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
+    'saghen/blink.cmp',
+    version = '1.*',
+    opts = {
+      keymap = { preset = 'default' },
+      appearance = { nerd_font_variant = 'mono' },
+      completion = { documentation = { auto_show = true } },
+      sources = { default = { 'lsp', 'path', 'buffer' } },
     },
-  }, -- LSP Config enhancement
+  },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    dependencies = {
-      'nvim-lua/plenary.nvim'
-    },
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   {
     'akinsho/bufferline.nvim',

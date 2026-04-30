@@ -16,6 +16,7 @@ catppuccin.setup({
     percentage = 0.15, -- percentage of the shade to apply to the inactive window
   },
   integrations = {
+    blink_cmp = true,
     treesitter = true,
     telescope = { enabled = true },
     indent_blankline = {

@@ -1,11 +1,7 @@
-require "nismit.config"
-require "nismit.plugins"
+require "config"
+require "plugins"
 
-local has = vim.fn.has
-local is_mac = has "macunix"
-local is_wsl = has "wsl"
-
-if is_wsl == 1 then
-  require "nismit.wsl"
+if vim.fn.has("wsl") == 1 then
+  require "wsl"
 end
 

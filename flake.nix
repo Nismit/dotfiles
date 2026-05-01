@@ -2,8 +2,7 @@
   description = "dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/566acc07c54dc807f91625bb286cb9b321b5f42a";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,19 +10,10 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "aarch64-darwin";
-      pkgsStable = import nixpkgs-stable { inherit system; };
-
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          (final: prev: {
-            direnv = pkgsStable.direnv;
-          })
-        ];
-      };
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       packages.${system}.default = home-manager.packages.${system}.home-manager;

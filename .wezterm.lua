@@ -77,6 +77,9 @@ end)
 -- config.leader = { key = '\u{10}', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   { key = 'k', mods = 'CMD', action = wezterm.action.ClearScrollback 'ScrollbackAndViewport' },
+  { key = 'p', mods = 'CMD|SHIFT', action = wezterm.action.ActivateCommandPalette },
+  { key = 'd', mods = 'CMD', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'd', mods = 'CMD|SHIFT', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
 }
 
 return config

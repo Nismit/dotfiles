@@ -29,7 +29,7 @@ alias claude='claude --model claude-opus-4-5-20251101'
 
 ## gh CLI wrapper (ignore GH_TOKEN from gcloud credential manager)
 gh() {
-  GH_TOKEN= command gh "$@"
+  env -u GH_TOKEN -u GITHUB_TOKEN command gh "$@"
 }
 
 ## For WSL update

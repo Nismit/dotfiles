@@ -24,8 +24,8 @@ alias ncu='npx npm-check-updates'
 alias vim='nvim'
 alias vi='nvim'
 
-# Claude Code (fixed opus 4.5 for now)
-alias claude='claude --model claude-opus-4-5-20251101'
+# Claude Code (fixed opus 4.6 for now)
+alias claude='claude --model claude-opus-4-6'
 
 ## gh CLI wrapper (ignore GH_TOKEN from gcloud credential manager)
 gh() {

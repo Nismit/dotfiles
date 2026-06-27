@@ -27,5 +27,8 @@
 
     # For work
     jdk21
+
+    # Rust
+    rustup
   ];
 }

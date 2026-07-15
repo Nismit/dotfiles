@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, herdr, system, ... }:
 
 {
   imports = [
@@ -30,5 +30,7 @@
 
     # Rust
     rustup
+
+    herdr.packages.${system}.herdr
   ];
 }

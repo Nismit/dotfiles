@@ -37,9 +37,21 @@ install_update_brew() {
     command /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     command brew update
   else
-    echo "Homebrew updating/upgrading... >"
+    echo "Homebrew updating... >"
     command brew update
-    command brew upgrade
+
+    echo "Upgrading formulae... >"
+    command brew upgrade --formula
+
+    local outdated_casks
+    outdated_casks=$(brew outdated --cask -q 2>/dev/null)
+    if [ -n "$outdated_casks" ]; then
+      echo "Upgrading outdated casks: $outdated_casks"
+      echo "$outdated_casks" | xargs brew upgrade --cask
+    else
+      echo "All casks are up to date"
+    fi
+
     command brew cleanup
   fi
 }

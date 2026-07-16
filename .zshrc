@@ -78,6 +78,7 @@ setopt pushd_ignore_dups
 
 ## Typo Correction (includes arguments)
 setopt correct_all
+CORRECT_IGNORE='*/*'
 
 ## Glob
 # Enable extended glob patterns

@@ -204,5 +204,8 @@ output/
 # For Packer
 .config/nvim/plugin/*
 
+# mise
+mise.local.toml
+
 # claude
 .claude/settings.local.json

@@ -27,10 +27,6 @@ alias vi='nvim'
 # Claude Code (fixed opus 4.6 for now)
 alias claude='claude --model claude-opus-4-6'
 
-## gh CLI wrapper (ignore GH_TOKEN from gcloud credential manager)
-gh() {
-  env -u GH_TOKEN -u GITHUB_TOKEN command gh "$@"
-}
 
 ## For WSL update
 alias wslupdate='sudo apt update && sudo apt upgrade -y'

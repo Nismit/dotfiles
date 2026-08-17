@@ -68,15 +68,20 @@ install_update_volta() {
   fi
 }
 
+ensure_nix_env() {
+  if [ ! -x "$(command -v nix)" ]; then
+    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
+  fi
+}
+
 install_nix() {
   if [ ! -x "$(command -v nix)" ]; then
     echo "Installing Nix... >"
     curl -L https://nixos.org/nix/install | sh
 
-    # Source Nix environment for current session
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
+    ensure_nix_env
   else
     echo "Nix is already installed"
   fi
@@ -95,17 +100,27 @@ install_nix() {
 }
 
 home_manager_switch() {
+  ensure_nix_env
   echo "Running home-manager switch... >"
   cd ~/.dotfiles
   nix run home-manager/master -- switch --flake .#default --impure
 }
 
 nix_update() {
+  ensure_nix_env
   echo "Updating flake.lock... >"
   cd ~/.dotfiles
   nix flake update
   echo "Running home-manager switch... >"
   nix run home-manager/master -- switch --flake .#default --impure
+}
+
+nix_cleanup() {
+  ensure_nix_env
+  echo "Collecting garbage (older than 30 days)... >"
+  nix-collect-garbage --delete-older-than 30d
+  echo "Optimising nix store... >"
+  nix store optimise
 }
 
 # Ref: https://unix.stackexchange.com/questions/146570/arrow-key-enter-menu
@@ -176,7 +191,7 @@ select_option() {
 echo "Select one option using up/down keys and enter to confirm:"
 echo ""
 
-options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta" "Setup Nix (Initial)" "Apply Dotfiles Config" "Update Nix Packages")
+options=("Install/Update Brew" "Install Common Bundle" "Install Personal Bundle" "Install Xcode Bundle" "Install/Update volta" "Setup Nix (Initial)" "Apply Dotfiles Config" "Update Nix Packages" "Cleanup Nix Store")
 
 
 select_option "${options[@]}"
@@ -191,5 +206,6 @@ case $choice in
 5)  install_nix ;;
 6)  home_manager_switch ;;
 7)  nix_update ;;
+8)  nix_cleanup ;;
 esac
 

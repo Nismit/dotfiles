@@ -25,7 +25,7 @@ alias vim='nvim'
 alias vi='nvim'
 
 # Claude Code (fixed opus 4.6 for now)
-alias claude='claude --model claude-opus-4-6'
+# alias claude='claude --model claude-opus-4-6'
 
 
 ## For WSL update

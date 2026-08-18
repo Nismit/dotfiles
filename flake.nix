@@ -2,7 +2,7 @@
   description = "dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/8a1b0127302ea51e05bf4ea5a291743fac442406";
+    nixpkgs.url = "github:NixOS/nixpkgs/fe6deff5fad4a42d0e08d2bab3f2d6c7c88f3fe5";
 
     home-manager = {
       url = "github:nix-community/home-manager";
